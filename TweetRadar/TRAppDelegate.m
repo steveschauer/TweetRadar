@@ -7,12 +7,24 @@
 //
 
 #import "TRAppDelegate.h"
+#import "TRStorage.h"
+#import <Parse/Parse.h>
 
 @implementation TRAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    // Add your Parse ID and key here:
+    [Parse setApplicationId:@"J7Egxihh0whFZafQUAMDJHXJ4bsK7ExheAzcjReP" clientKey:@"cQjfw1inSA9J5Fcblewexg1o0X9ffKQoXq5Mi3co"];
+    
+    // Add your Twitter keys and secrets here:
+    [PFTwitterUtils initializeWithConsumerKey:@"w9UkgJefenCl0VjtR9yEa0qB1" consumerSecret:@"nW0MHfMLqFtfRr2RBoCMfjV0jbQ5HFdcDbDaVj1m6Q3zpfC6bn"];
+    [[PFTwitterUtils twitter] setAuthToken:@"46272995-RC3fHUatSsmi4sclRaxRCw7iVn0is1oHK6JIXe3QL"];
+    [[PFTwitterUtils twitter] setAuthTokenSecret:@"O0QU4cZadhPzt3JZLjTh0fUv0ypDfcQ292iRbVdaAc7xV"];
+    
+    // kick off the tweet retrieval
+    [TRStorage store];
+    
     return YES;
 }
 							
